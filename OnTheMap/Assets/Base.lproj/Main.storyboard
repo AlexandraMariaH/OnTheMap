@@ -16,6 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="cBd-ga-jz0">
+                                <rect key="frame" x="18" y="74" width="376" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="aGB-Nx-We9"/>
+                                </constraints>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="nLE-0e-MLD">
                                 <rect key="frame" x="115.5" y="244" width="183" height="330"/>
                                 <subviews>
@@ -39,6 +45,9 @@
                                         <rect key="frame" x="0.0" y="187.5" width="183" height="30"/>
                                         <color key="backgroundColor" name="GradientBottom"/>
                                         <state key="normal" title="Login"/>
+                                        <connections>
+                                            <action selector="loginTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cYW-J8-I8D"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqe-NG-02i" userLabel="Sign Up">
                                         <rect key="frame" x="0.0" y="248.5" width="183" height="20.5"/>
@@ -50,19 +59,17 @@
                                         <rect key="frame" x="0.0" y="300" width="183" height="30"/>
                                         <color key="backgroundColor" name="PrimaryLight"/>
                                         <state key="normal" title="Sign up"/>
+                                        <connections>
+                                            <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rTy-l5-bog"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1oD-az-u7e" userLabel="Activity Indicator">
-                                <rect key="frame" x="197" y="747" width="20" height="20"/>
+                                <rect key="frame" x="197" y="608" width="20" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="cBd-ga-jz0">
-                                <rect key="frame" x="18" y="74" width="376" height="150"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="aGB-Nx-We9"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.26274627449999999" green="0.26274150610000002" blue="0.262747854" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -75,7 +82,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="acitivityIndicator" destination="1oD-az-u7e" id="Gx2-sr-W7a"/>
+                        <outlet property="activityIndicator" destination="1oD-az-u7e" id="Jaj-us-DzB"/>
                         <outlet property="emailTextField" destination="tZ5-J3-jNi" id="mM7-b9-WJk"/>
                         <outlet property="loginButton" destination="av6-v7-tHk" id="fqW-kJ-Quc"/>
                         <outlet property="passwordTextField" destination="Hww-rh-4zE" id="pO2-wT-cIE"/>
