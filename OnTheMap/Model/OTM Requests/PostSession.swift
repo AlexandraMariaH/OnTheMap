@@ -9,10 +9,14 @@ import Foundation
 
 struct PostSession: Codable {
     
-    let requestToken: String
+    let udacityAuthDic: [String: [String]]
+    let username: String
+    let password: String
     
     enum CodingKeys: String, CodingKey {
-        case requestToken = "request_token"
+        case udacityAuthDic = "udacity"
+        case username
+        case password
     }
     
 }

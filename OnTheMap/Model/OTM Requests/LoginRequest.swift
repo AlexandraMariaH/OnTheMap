@@ -7,15 +7,11 @@
 
 import Foundation
 
-struct LoginRequest: Codable {
+struct LoginRequest: Encodable {
+    let udacity: UdacityUsernamePassword
+}
     
+struct UdacityUsernamePassword: Encodable {
     let username: String
     let password: String
-    let requestToken: String
-    
-    enum CodingKeys: String, CodingKey {
-        case username
-        case password
-        case requestToken = "request_token"
-    }
 }
