@@ -57,8 +57,11 @@ class OTMClient {
     }
     
     @discardableResult class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
+       
         print("in task for get request")
+        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            
             guard let data = data else {
                 DispatchQueue.main.async {
                     completion(nil, error)
@@ -67,23 +70,25 @@ class OTMClient {
             }
             print("in url session")
 
-            let decoder = JSONDecoder()
-            do {                print("url1")
+            do {
+                print("before decoder")
 
-                let responseObject = try decoder.decode(ResponseType.self, from: data)
-                print("url")
+                let responseObject = try JSONDecoder().decode(ResponseType.self, from: data)
+                print("after decoder")
 
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
             } catch {
                 do { 
-                    let errorResponse = try decoder.decode(OTMResponse.self, from: data) as Error
+                    let errorResponse = try JSONDecoder().decode(OTMResponse.self, from: data) as Error
                     DispatchQueue.main.async {
                         completion(nil, errorResponse)
                     }
                 } catch {
                     DispatchQueue.main.async {
+                        print("decoder failed")
+
                         completion(nil, error)
                     }
                 }
@@ -160,15 +165,18 @@ class OTMClient {
         print("in get request token")
         taskForGETRequest(url: Endpoints.getRequestToken.url, responseType: RequestTokenResponse.self) { response, error in
             if let response = response {
+                print("in response")
                 Auth.requestToken = response.requestToken
                 completion(true, nil)
             } else {
+                print("fail get request token")
                 completion(false, error)
             }
         }
     }
     
     class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        print("in login")
         let usernameAndPassword = UdacityUsernamePassword(username: username, password: password)
         let body = LoginRequest(udacity: usernameAndPassword)
         taskForPOSTRequest(url: Endpoints.login.url, username: username, password: password, responseType: RequestTokenResponse.self, body: body) { response, error in

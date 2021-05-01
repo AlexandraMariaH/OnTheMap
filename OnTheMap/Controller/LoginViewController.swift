@@ -35,6 +35,7 @@ class LoginViewController: UIViewController {
         if success {
             OTMClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:error:))
         } else {
+            print("handle fail")
             showLoginFailure(message: error?.localizedDescription ?? "")
         }
     }
