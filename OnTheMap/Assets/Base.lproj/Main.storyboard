@@ -97,16 +97,66 @@
             </objects>
             <point key="canvasLocation" x="-36" y="94"/>
         </scene>
+        <!--Map-->
+        <scene sceneID="S5l-zl-kSC">
+            <objects>
+                <viewController id="Ygi-dm-LbN" userLabel="Map" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iBZ-R0-2oT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zC6-cI-CkH">
+                                <rect key="frame" x="0.0" y="29" width="428" height="730"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zfY-1p-3D2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="On the Map" id="Gqq-2T-5YP">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="DfA-Rc-rV0"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="AddPin" image="plus" catalog="system" id="mTQ-kF-jjt"/>
+                            <barButtonItem title="Refresh" image="arrow.clockwise" catalog="system" id="Q32-Vg-aVz"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addPin" destination="mTQ-kF-jjt" id="jk6-dT-s0f"/>
+                        <outlet property="logout" destination="DfA-Rc-rV0" id="DZ0-lS-yjq"/>
+                        <outlet property="mapView" destination="zC6-cI-CkH" id="2aE-x8-F8I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ftm-Z7-IcY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2621.739130434783" y="-198.21428571428569"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="mIF-Od-cIf">
+            <objects>
+                <navigationController id="vJ5-Xn-SP0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="mappin.and.ellipse" catalog="system" id="F1m-55-SV5"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1sT-QC-LD5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ygi-dm-LbN" kind="relationship" relationship="rootViewController" id="sQf-jQ-GlB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ByY-y3-4w3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1904" y="-198"/>
+        </scene>
         <!--List-->
         <scene sceneID="cyS-2m-iiq">
             <objects>
-                <viewController id="d9m-NO-1fU" userLabel="List" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="FOS-KJ-cuh">
+                <viewController id="d9m-NO-1fU" userLabel="List" customClass="ListViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FOS-KJ-cuh" customClass="UITableView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qfr-g7-zOX">
-                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="654"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -119,7 +169,21 @@
                             <constraint firstItem="Qfr-g7-zOX" firstAttribute="top" secondItem="BcH-an-XTU" secondAttribute="top" id="s0t-Ci-Nsx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="2MO-xt-8rk" userLabel="Students"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="On the Map" id="2MO-xt-8rk" userLabel="Students">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="KPs-7L-lPD"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="AddPin" image="plus" catalog="system" id="fnx-D6-aCH"/>
+                            <barButtonItem title="Refresh" image="arrow.clockwise" catalog="system" id="nMd-ef-lVL"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addPin" destination="fnx-D6-aCH" id="kWq-Pz-GFW"/>
+                        <outlet property="listView" destination="Qfr-g7-zOX" id="wJd-oV-eR1"/>
+                        <outlet property="logout" destination="KPs-7L-lPD" id="ABc-Ze-jYm"/>
+                        <outlet property="refresh" destination="nMd-ef-lVL" id="iR0-fj-2XK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9C-67-qOl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,22 +206,6 @@
             </objects>
             <point key="canvasLocation" x="1832" y="445"/>
         </scene>
-        <!--Map-->
-        <scene sceneID="1WD-n4-xX9">
-            <objects>
-                <viewController id="PtE-uq-sgD" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9xg-39-Mrh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="d1e-mt-vfv"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="mappin.and.ellipse" catalog="system" id="VYi-Ba-9kc"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DCK-44-5IZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1764" y="-209"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="APb-oQ-wW5">
             <objects>
@@ -168,7 +216,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="PtE-uq-sgD" kind="relationship" relationship="viewControllers" id="GyE-eD-0rO"/>
+                        <segue destination="vJ5-Xn-SP0" kind="relationship" relationship="viewControllers" id="tIW-GB-GC3"/>
                         <segue destination="f75-j7-Uhm" kind="relationship" relationship="viewControllers" id="eXZ-Ba-l6A"/>
                     </connections>
                 </tabBarController>
@@ -180,7 +228,9 @@
     <resources>
         <image name="List" width="32" height="32"/>
         <image name="Logo" width="710" height="312"/>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="GradientBottom">
             <color red="0.5429999828338623" green="0.54000002145767212" blue="0.54699999094009399" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
