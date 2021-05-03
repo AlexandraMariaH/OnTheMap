@@ -12,8 +12,7 @@ class OTMClient {
     static let apiKey = "e60a51cd20961f6f71bb4def5ebf9321"
     
     struct Auth {
-       // static var accountId = 0
-        static var requestToken = ""
+        static var key = ""
         static var sessionId = ""
     }
     
@@ -31,7 +30,8 @@ class OTMClient {
             switch self {
             
             case .login:
-                return Endpoints.base + "/authentication/token/validate_with_login" + Endpoints.apiKeyParam
+                return Endpoints.base + "/v1/session"
+               // return Endpoints.base + "/authentication/token/validate_with_login" + Endpoints.apiKeyParam
                 
             case .createSessionId:
                 return Endpoints.base + "/v1/session"
@@ -56,7 +56,7 @@ class OTMClient {
         }
     }
     
-    @discardableResult class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
+   /* @discardableResult class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
        
         print("in task for get request")
         
@@ -97,22 +97,29 @@ class OTMClient {
         task.resume()
         
         return task
-    }
+    }*/
     
-    class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, username: String, password: String, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
+    class func taskForPOSTRequest<ResponseType: Decodable>(url: URL, body: String, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+        print("login3.0")
          var request = URLRequest(url: url)
          request.httpMethod = "POST"
          request.addValue("application/json", forHTTPHeaderField: "Accept")
          request.addValue("application/json", forHTTPHeaderField: "Content-Type")
          request.httpBody = try! JSONEncoder().encode(body)
-         request.httpBody = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: .utf8)
+         request.httpBody = body.data(using: .utf8)
+        print("login3.1")
+        print(request)
+
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
           if error != nil {
             DispatchQueue.main.async {
-                            completion(nil, error)
+                
+                completion(nil, error)
             }
               return
           }
+            print("login3.2")
+
           let range = 5..<data!.count
           let newData = data?.subdata(in: range) /* subset response data! */
             
@@ -142,26 +149,24 @@ class OTMClient {
                     task.resume()
              }
     
-    class func createSessionId(completion: @escaping (Bool, Error?) -> Void) {
-        do {
-            let body = try PostSession(from: Auth.requestToken as! Decoder)
-        taskForPOSTRequest(url: Endpoints.createSessionId.url, username: "mm", password: "mmm", responseType: SessionResponse.self, body: body) { response, error in
+    class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+            let body = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
+
+        taskForPOSTRequest(url: Endpoints.createSessionId.url, body: body, responseType: SessionResponse.self) { (response, error) in
+
             if let response = response {
-                Auth.sessionId = response.sessionId
+                Auth.key = response.account.key
+                Auth.sessionId = response.session.id
+                print(Auth.sessionId, Auth.key)
+
                 completion(true, nil)
             } else {
                 completion(false, nil)
             }
         }
-    } catch {
-    DispatchQueue.main.async {
-        completion(false, error)
-    }
-    }
-        
     }
     
-    class func getRequestToken(completion: @escaping (Bool, Error?) -> Void) {
+  /*  class func getRequestToken(completion: @escaping (Bool, Error?) -> Void) {
         print("in get request token")
         taskForGETRequest(url: Endpoints.getRequestToken.url, responseType: RequestTokenResponse.self) { response, error in
             if let response = response {
@@ -173,21 +178,29 @@ class OTMClient {
                 completion(false, error)
             }
         }
-    }
+    }*/
     
-    class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
-        print("in login")
+    /*class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        print("in login1")
         let usernameAndPassword = UdacityUsernamePassword(username: username, password: password)
+        print("in login2")
+
         let body = LoginRequest(udacity: usernameAndPassword)
+        print("in login3")
+
         taskForPOSTRequest(url: Endpoints.login.url, username: username, password: password, responseType: RequestTokenResponse.self, body: body) { response, error in
             if let response = response {
+                print("in login4")
+
                 Auth.requestToken = response.requestToken
                 completion(true, nil)
             } else {
+                print("in loginerror")
+
                 completion(false, error)
             }
         }
-    }
+    }*/
     
   /*  class func logout(completion: @escaping () -> Void) {
         var request = URLRequest(url: Endpoints.logout.url)

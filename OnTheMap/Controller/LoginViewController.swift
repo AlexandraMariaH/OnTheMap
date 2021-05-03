@@ -25,12 +25,18 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        setLoggingIn(true)
-        OTMClient.getRequestToken(completion: handleRequestTokenResponse(success:error:))
         print("loginbuttontapped")
+
+        setLoggingIn(true)
+      //  OTMClient.getRequestToken(completion: handleRequestTokenResponse(success:error:))
+        print("login")
+         //   OTMClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:error:))
+        
+        OTMClient.login(username: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "", completion: self.handleSessionResponse(success:error:))
     }
     
-    func handleRequestTokenResponse(success: Bool, error: Error?) {
+    
+ /*   func handleRequestTokenResponse(success: Bool, error: Error?) {
         print("handle")
         if success {
             OTMClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLoginResponse(success:error:))
@@ -38,23 +44,23 @@ class LoginViewController: UIViewController {
             print("handle fail")
             showLoginFailure(message: error?.localizedDescription ?? "")
         }
-    }
+    }*/
     
-    func handleLoginResponse(success: Bool, error: Error?) {
+   /* func handleLoginResponse(success: Bool, error: Error?) {
         if success {
             OTMClient.createSessionId(completion: handleSessionResponse(success:error:))
         } else {
             showLoginFailure(message: error?.localizedDescription ?? "")
         }
-    }
+    }*/
     
     func handleSessionResponse(success: Bool, error: Error?) {
         setLoggingIn(false)
         if success {
             performSegue(withIdentifier: "completeLogin", sender: nil)
         } else {
-        //    showAlert(message: "Please check your email or password and try again.", title: error?.localizedDescription ?? "Generic Error")
-            showLoginFailure(message: error?.localizedDescription ?? "")
+            showAlert(title: error?.localizedDescription ?? "Generic Error", message: "Please check your email or password and try again." )
+           // showLoginFailure(message: error?.localizedDescription ?? "")
         }
     }
     
@@ -71,14 +77,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signUp(_ sender: UIButton) {
-    /*            OTMClient.getRequestToken() { success, error in
-            if success {
-                print("in success")
-                UIApplication.shared.open(OTMClient.Endpoints.webAuth.url, options: [:], completionHandler: nil)
-            } else {
-                self.showRedirectionFailure(message: error?.localizedDescription ?? "")
-            }
-        }*/
         
         if let url = URL(string: "https://auth.udacity.com/sign-up") {
             UIApplication.shared.open(url)
@@ -86,7 +84,13 @@ class LoginViewController: UIViewController {
         print("signupbuttontapped")
     }
     
-    func showLoginFailure(message: String) {
+  /*  func showLoginFailure(message: String) {
+        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        show(alertVC, sender: nil)
+    }*/
+    
+    func showAlert(title: String, message: String) {
         let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         show(alertVC, sender: nil)

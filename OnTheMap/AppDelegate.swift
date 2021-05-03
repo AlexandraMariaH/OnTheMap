@@ -39,17 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+  /*  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
         let components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         
         if components?.scheme == "onTheMap" && components?.path == "authenticate" {
             let loginVC = window?.rootViewController as! LoginViewController
-            OTMClient.createSessionId(completion: loginVC.handleSessionResponse(success:error:))
+            OTMClient.createSessionId(username: String, password: String, completion: loginVC.handleSessionResponse(success:error:))
         }
         
-        return true
+        return true */
     }
 
-}
 
