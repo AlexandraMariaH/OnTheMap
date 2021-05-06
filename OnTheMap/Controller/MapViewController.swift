@@ -21,17 +21,5 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         mapView.delegate = self
         
-        self.navigationItem.title = "On The Map"
-      /*  self.navigationItem.rightBarButtonItems = [UIBarButtonItem(image: UIImage(named: "Logo"), style: .plain, target: self, action: #selector(addPin)), UIBarButtonItem(image: UIImage(named: "icon_refresh"), style: .plain, target: self, action: #selector(refresh))]
-        self.refresh()*/
     }
-    
-   // @objc func addPin() {
-     //   self.performSegue(withIdentifier: "getLocation2", sender: nil)
-   // }
-    
-  //  @objc func refresh() {
-         //   OTM.getStudentLocation(completion: self.handleGetLocation(success:error:))
-  //      }
-
 }
