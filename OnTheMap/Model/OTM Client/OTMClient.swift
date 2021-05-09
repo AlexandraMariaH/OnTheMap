@@ -42,12 +42,9 @@ class OTMClient {
                 
             case .webAuth:
                 return "https://auth.udacity.com/sign-up"
-                
-            //"https://www.udacity.com/authenticate/\(Auth.requestToken)?redirect_to=udacity:authenticate"
-            
+                            
             case .logout:
                 return Endpoints.base + "/v1/session"
-                    //+ Endpoints.apiKeyParam
             }
         }
         
@@ -202,7 +199,7 @@ class OTMClient {
         }
     }*/
     
-  /*  class func logout(completion: @escaping () -> Void) {
+    class func logout(completion: @escaping () -> Void) {
         var request = URLRequest(url: Endpoints.logout.url)
         request.httpMethod = "DELETE"
         var xsrfCookie: HTTPCookie? = nil
@@ -221,19 +218,24 @@ class OTMClient {
           }
           let range = (5..<data!.count)
           let newData = data?.subdata(in: range) /* subset response data! */
+          Auth.sessionId = ""
           print(String(data: newData!, encoding: .utf8)!)
+          completion()
         }
-        task.resume()*/
-        
-        /*
-        let body = LogoutRequest(sessionId: Auth.sessionId)
-        request.httpBody = try! JSONEncoder().encode(body)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            Auth.requestToken = ""
-            Auth.sessionId = ""
-            completion()
-        }
-        task.resume()*/
+        task.resume()
+    }
     
+    /*class func getStudentLocation(completion: @escaping (Bool,Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.getStudentLocation.url, response: GetLocationResponse.self, start: 0) { (response, error) in
+                   if let response = response {
+                    OnTheMapModel.studentInformation = response.results
+                    completion(true,nil)
+                   }
+                   else {
+                    completion(false,error)
+                   }
+               }
+
+    }*/
+
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E01FD13B2640085C00B56F59 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01FD13A2640085C00B56F59 /* MapViewController.swift */; };
 		E01FD13D2640168700B56F59 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01FD13C2640168700B56F59 /* ListViewController.swift */; };
+		E01FD13F2644892400B56F59 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01FD13E2644892400B56F59 /* AddLocationViewController.swift */; };
 		E02424412634107E000955D6 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02424402634107E000955D6 /* GradientView.swift */; };
 		E0242446263410D9000955D6 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0242445263410D9000955D6 /* Colors.swift */; };
 		E024244B2634AAB3000955D6 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E024244A2634AAB3000955D6 /* LoginTextField.swift */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		E01FD13A2640085C00B56F59 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E01FD13C2640168700B56F59 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		E01FD13E2644892400B56F59 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		E02424402634107E000955D6 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		E0242445263410D9000955D6 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E024244A2634AAB3000955D6 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				E0D62D3526330C8E008D40E7 /* LoginViewController.swift */,
 				E01FD13A2640085C00B56F59 /* MapViewController.swift */,
 				E01FD13C2640168700B56F59 /* ListViewController.swift */,
+				E01FD13E2644892400B56F59 /* AddLocationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				E02424502634AADA000955D6 /* LoginButton.swift in Sources */,
 				E02424412634107E000955D6 /* GradientView.swift in Sources */,
 				E01FD13B2640085C00B56F59 /* MapViewController.swift in Sources */,
+				E01FD13F2644892400B56F59 /* AddLocationViewController.swift in Sources */,
 				E01FD13D2640168700B56F59 /* ListViewController.swift in Sources */,
 				E0D62D3426330C8E008D40E7 /* SceneDelegate.swift in Sources */,
 			);

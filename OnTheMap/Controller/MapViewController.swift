@@ -22,4 +22,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         
     }
+    
+    @IBAction func refreshTapped(_ sender: UIButton) {
+        // OTMClient.getStudentLocation(completion: self.handleGetLocation(success:error:))
+        print("refreshtapped")
+    }
+    
+    @IBAction func logoutTapped(_ sender: UIButton) {
+        print("logouttapped")
+        OTMClient.logout {
+            DispatchQueue.main.async {
+              self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
+    }
 }

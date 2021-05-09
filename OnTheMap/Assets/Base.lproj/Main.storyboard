@@ -114,14 +114,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="On the Map" id="Gqq-2T-5YP">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="DfA-Rc-rV0"/>
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="DfA-Rc-rV0">
+                            <connections>
+                                <action selector="logoutTapped:" destination="Ygi-dm-LbN" id="D4W-Wh-h7d"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="mTQ-kF-jjt">
                                 <connections>
                                     <segue destination="7aq-t8-ryV" kind="presentation" id="cqv-6o-DZ8"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="Q32-Vg-aVz"/>
+                            <barButtonItem systemItem="refresh" id="Q32-Vg-aVz">
+                                <connections>
+                                    <action selector="refreshTapped:" destination="Ygi-dm-LbN" id="1Xx-xm-Dkq"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -137,7 +145,7 @@
         <!--Add Location-->
         <scene sceneID="OtZ-3k-3Nc">
             <objects>
-                <viewController id="7aq-t8-ryV" userLabel="Add Location" sceneMemberID="viewController">
+                <viewController id="7aq-t8-ryV" userLabel="Add Location" customClass="AddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="61R-rx-QVT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,7 +210,7 @@
         <!--Add Location View Controller-->
         <scene sceneID="gMZ-vC-vqV">
             <objects>
-                <viewController id="7Z7-h3-Hnr" userLabel="Add Location View Controller" sceneMemberID="viewController">
+                <viewController id="7Z7-h3-Hnr" userLabel="Add Location View Controller" customClass="AddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7aZ-VU-3qM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,6 +245,10 @@
                             <constraint firstItem="mgz-bf-K7f" firstAttribute="leading" secondItem="HKV-sK-eZR" secondAttribute="leading" id="uqt-B5-Uvy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addLocation" destination="xi0-zf-5Sg" id="uyd-lP-3Yt"/>
+                        <outlet property="mapView" destination="FnI-JV-bc5" id="LkI-Kc-EZJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOo-Az-Hru" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -283,14 +295,22 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="On the Map" id="2MO-xt-8rk" userLabel="Students">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="KPs-7L-lPD"/>
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="KPs-7L-lPD">
+                            <connections>
+                                <action selector="logoutTapped:" destination="d9m-NO-1fU" id="x0f-EA-DuA"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="fnx-D6-aCH">
                                 <connections>
                                     <segue destination="7aq-t8-ryV" kind="presentation" id="ukO-Vn-cxD"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="refresh" id="nMd-ef-lVL"/>
+                            <barButtonItem systemItem="refresh" id="nMd-ef-lVL">
+                                <connections>
+                                    <action selector="refreshTapped:" destination="d9m-NO-1fU" id="Mqh-bE-XIo"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -342,7 +362,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ukO-Vn-cxD"/>
+        <segue reference="cqv-6o-DZ8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="List" width="32" height="32"/>

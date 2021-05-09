@@ -21,5 +21,19 @@ class ListViewController: UITableViewController {
         self.tableView.delegate = self
           
     }
+    
+    @IBAction func refreshTapped(_ sender: UIButton) {
+        // OTMClient.getStudentLocation(completion: self.handleGetLocation(success:error:))
+    }
+    
+    @IBAction func logoutTapped(_ sender: UIButton) {
+        OTMClient.logout {
+            DispatchQueue.main.async {
+              self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    
 
 }
