@@ -15,12 +15,14 @@
 		E024244B2634AAB3000955D6 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E024244A2634AAB3000955D6 /* LoginTextField.swift */; };
 		E02424502634AADA000955D6 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E024244F2634AADA000955D6 /* LoginButton.swift */; };
 		E024245D26355A67000955D6 /* OTMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E024245C26355A67000955D6 /* OTMClient.swift */; };
-		E024246226355BBA000955D6 /* PostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E024246126355BBA000955D6 /* PostSession.swift */; };
 		E024246726355BDD000955D6 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E024246626355BDD000955D6 /* LoginRequest.swift */; };
-		E024246C26355C04000955D6 /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E024246B26355C04000955D6 /* LogoutRequest.swift */; };
 		E024247426355D2A000955D6 /* OTMResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E024247326355D2A000955D6 /* OTMResponse.swift */; };
 		E024247926355D4E000955D6 /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E024247826355D4E000955D6 /* SessionResponse.swift */; };
 		E024247E26355D6C000955D6 /* RequestTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E024247D26355D6C000955D6 /* RequestTokenResponse.swift */; };
+		E062045A26480DE200D183AD /* CreateStudentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E062045926480DE200D183AD /* CreateStudentResponse.swift */; };
+		E0909B27264D2B820074291B /* GetStudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0909B26264D2B820074291B /* GetStudentLocationResponse.swift */; };
+		E0909B29264D2BE20074291B /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0909B28264D2BE20074291B /* Student.swift */; };
+		E0909B2D264DA7A00074291B /* OTMModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0909B2C264DA7A00074291B /* OTMModel.swift */; };
 		E0D62D3226330C8E008D40E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D62D3126330C8E008D40E7 /* AppDelegate.swift */; };
 		E0D62D3426330C8E008D40E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D62D3326330C8E008D40E7 /* SceneDelegate.swift */; };
 		E0D62D3626330C8E008D40E7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D62D3526330C8E008D40E7 /* LoginViewController.swift */; };
@@ -57,12 +59,14 @@
 		E024244A2634AAB3000955D6 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		E024244F2634AADA000955D6 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		E024245C26355A67000955D6 /* OTMClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMClient.swift; sourceTree = "<group>"; };
-		E024246126355BBA000955D6 /* PostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSession.swift; sourceTree = "<group>"; };
 		E024246626355BDD000955D6 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
-		E024246B26355C04000955D6 /* LogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
 		E024247326355D2A000955D6 /* OTMResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMResponse.swift; sourceTree = "<group>"; };
 		E024247826355D4E000955D6 /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
 		E024247D26355D6C000955D6 /* RequestTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTokenResponse.swift; sourceTree = "<group>"; };
+		E062045926480DE200D183AD /* CreateStudentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStudentResponse.swift; sourceTree = "<group>"; };
+		E0909B26264D2B820074291B /* GetStudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStudentLocationResponse.swift; sourceTree = "<group>"; };
+		E0909B28264D2BE20074291B /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		E0909B2C264DA7A00074291B /* OTMModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTMModel.swift; sourceTree = "<group>"; };
 		E0D62D2E26330C8E008D40E7 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D62D3126330C8E008D40E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0D62D3326330C8E008D40E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 		E02424302634024B000955D6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				E0909B2C264DA7A00074291B /* OTMModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -156,8 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				E024246626355BDD000955D6 /* LoginRequest.swift */,
-				E024246126355BBA000955D6 /* PostSession.swift */,
-				E024246B26355C04000955D6 /* LogoutRequest.swift */,
 			);
 			path = "OTM Requests";
 			sourceTree = "<group>";
@@ -168,6 +171,9 @@
 				E024247326355D2A000955D6 /* OTMResponse.swift */,
 				E024247826355D4E000955D6 /* SessionResponse.swift */,
 				E024247D26355D6C000955D6 /* RequestTokenResponse.swift */,
+				E062045926480DE200D183AD /* CreateStudentResponse.swift */,
+				E0909B26264D2B820074291B /* GetStudentLocationResponse.swift */,
+				E0909B28264D2BE20074291B /* Student.swift */,
 			);
 			path = "OTM Responses";
 			sourceTree = "<group>";
@@ -366,14 +372,16 @@
 			files = (
 				E0D62D3626330C8E008D40E7 /* LoginViewController.swift in Sources */,
 				E024245D26355A67000955D6 /* OTMClient.swift in Sources */,
-				E024246226355BBA000955D6 /* PostSession.swift in Sources */,
+				E0909B27264D2B820074291B /* GetStudentLocationResponse.swift in Sources */,
+				E0909B29264D2BE20074291B /* Student.swift in Sources */,
+				E062045A26480DE200D183AD /* CreateStudentResponse.swift in Sources */,
 				E024247926355D4E000955D6 /* SessionResponse.swift in Sources */,
 				E024246726355BDD000955D6 /* LoginRequest.swift in Sources */,
 				E0242446263410D9000955D6 /* Colors.swift in Sources */,
-				E024246C26355C04000955D6 /* LogoutRequest.swift in Sources */,
 				E0D62D3226330C8E008D40E7 /* AppDelegate.swift in Sources */,
 				E024247E26355D6C000955D6 /* RequestTokenResponse.swift in Sources */,
 				E024247426355D2A000955D6 /* OTMResponse.swift in Sources */,
+				E0909B2D264DA7A00074291B /* OTMModel.swift in Sources */,
 				E024244B2634AAB3000955D6 /* LoginTextField.swift in Sources */,
 				E02424502634AADA000955D6 /* LoginButton.swift in Sources */,
 				E02424412634107E000955D6 /* GradientView.swift in Sources */,

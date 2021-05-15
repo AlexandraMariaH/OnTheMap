@@ -114,7 +114,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="On the Map" id="Gqq-2T-5YP">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="DfA-Rc-rV0">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" style="done" id="DfA-Rc-rV0">
                             <connections>
                                 <action selector="logoutTapped:" destination="Ygi-dm-LbN" id="D4W-Wh-h7d"/>
                             </connections>
@@ -136,6 +136,7 @@
                         <outlet property="addPin" destination="mTQ-kF-jjt" id="jk6-dT-s0f"/>
                         <outlet property="logout" destination="DfA-Rc-rV0" id="DZ0-lS-yjq"/>
                         <outlet property="mapView" destination="zC6-cI-CkH" id="2aE-x8-F8I"/>
+                        <outlet property="refresh" destination="Q32-Vg-aVz" id="cV5-Bc-boG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ftm-Z7-IcY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -171,7 +172,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="7Z7-h3-Hnr" kind="presentation" id="yNT-Zk-qeV"/>
+                                            <segue destination="7Z7-h3-Hnr" kind="presentation" identifier="addLocation" id="yNT-Zk-qeV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -185,7 +186,11 @@
                                 <rect key="frame" x="0.0" y="13" width="414" height="56"/>
                                 <items>
                                     <navigationItem title="Add Location" id="SMo-Un-Mm6">
-                                        <barButtonItem key="leftBarButtonItem" title="CANCEL" id="wOA-7Y-pkI"/>
+                                        <barButtonItem key="leftBarButtonItem" title="CANCEL" id="wOA-7Y-pkI">
+                                            <connections>
+                                                <action selector="cancelAddLocation:" destination="7aq-t8-ryV" id="3uq-DR-AJW"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -225,17 +230,20 @@
                                 <rect key="frame" x="0.0" y="33" width="414" height="741"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnI-JV-bc5" userLabel="FINISH">
-                                <rect key="frame" x="73.5" y="744" width="267" height="30"/>
+                                <rect key="frame" x="73.5" y="689" width="267" height="30"/>
                                 <color key="backgroundColor" red="0.29561075570000001" green="0.62988126280000001" blue="0.84709280730000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="                          FINISH                             "/>
+                                <connections>
+                                    <action selector="finishAddLocation:" destination="7Z7-h3-Hnr" eventType="touchUpInside" id="zNZ-KR-eH6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="POC-GF-CBr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="POC-GF-CBr" firstAttribute="bottom" secondItem="HKV-sK-eZR" secondAttribute="bottom" constant="34" id="1Cy-hh-aTR"/>
-                            <constraint firstItem="FnI-JV-bc5" firstAttribute="bottom" secondItem="HKV-sK-eZR" secondAttribute="bottom" id="4dJ-Mh-KgN"/>
+                            <constraint firstItem="FnI-JV-bc5" firstAttribute="bottom" secondItem="HKV-sK-eZR" secondAttribute="bottom" constant="-55" id="4dJ-Mh-KgN"/>
                             <constraint firstItem="FnI-JV-bc5" firstAttribute="centerX" secondItem="POC-GF-CBr" secondAttribute="centerX" id="OiU-wx-9sI"/>
                             <constraint firstItem="mgz-bf-K7f" firstAttribute="centerX" secondItem="HKV-sK-eZR" secondAttribute="centerX" id="PjU-Rm-mJ7"/>
                             <constraint firstItem="mgz-bf-K7f" firstAttribute="top" secondItem="POC-GF-CBr" secondAttribute="top" constant="33" id="SI3-PI-XWh"/>
@@ -275,13 +283,43 @@
         <scene sceneID="cyS-2m-iiq">
             <objects>
                 <viewController id="d9m-NO-1fU" userLabel="List" customClass="ListViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="FOS-KJ-cuh" customClass="UITableView">
+                    <view key="view" contentMode="scaleToFill" id="FOS-KJ-cuh" userLabel="View">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qfr-g7-zOX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qfr-g7-zOX">
                                 <rect key="frame" x="0.0" y="56" width="414" height="654"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentCell" textLabel="N8A-IE-Aff" detailTextLabel="zfM-nO-0Yg" rowHeight="55" style="IBUITableViewCellStyleSubtitle" id="ffq-Wf-QZY">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ffq-Wf-QZY" id="K1e-Iy-dap">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N8A-IE-Aff">
+                                                    <rect key="frame" x="20" y="12" width="25" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zfM-nO-0Yg">
+                                                    <rect key="frame" x="20" y="28.5" width="40.5" height="13.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="d9m-NO-1fU" id="mPj-oF-2ZT"/>
+                                    <outlet property="delegate" destination="d9m-NO-1fU" id="v50-wL-3Xz"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BcH-an-XTU"/>
@@ -295,7 +333,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="On the Map" id="2MO-xt-8rk" userLabel="Students">
-                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" id="KPs-7L-lPD">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" style="done" id="KPs-7L-lPD">
                             <connections>
                                 <action selector="logoutTapped:" destination="d9m-NO-1fU" id="x0f-EA-DuA"/>
                             </connections>
@@ -316,9 +354,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addPin" destination="fnx-D6-aCH" id="kWq-Pz-GFW"/>
-                        <outlet property="listView" destination="Qfr-g7-zOX" id="wJd-oV-eR1"/>
                         <outlet property="logout" destination="KPs-7L-lPD" id="ABc-Ze-jYm"/>
                         <outlet property="refresh" destination="nMd-ef-lVL" id="iR0-fj-2XK"/>
+                        <outlet property="tableView" destination="Qfr-g7-zOX" id="QsX-Gw-lka"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9C-67-qOl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
