@@ -146,7 +146,7 @@
         <!--Add Location-->
         <scene sceneID="OtZ-3k-3Nc">
             <objects>
-                <viewController id="7aq-t8-ryV" userLabel="Add Location" customClass="AddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7aq-t8-ryV" userLabel="Add Location" customClass="InformationPostingViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="61R-rx-QVT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,7 +172,8 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="7Z7-h3-Hnr" kind="presentation" identifier="addLocation" id="yNT-Zk-qeV"/>
+                                            <action selector="tab:" destination="7aq-t8-ryV" eventType="touchUpInside" id="P3M-0o-2yR"/>
+                                            <segue destination="7Z7-h3-Hnr" kind="presentation" identifier="tabAddLocation" id="0v5-Bd-R4a"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -188,7 +189,7 @@
                                     <navigationItem title="Add Location" id="SMo-Un-Mm6">
                                         <barButtonItem key="leftBarButtonItem" title="CANCEL" id="wOA-7Y-pkI">
                                             <connections>
-                                                <action selector="cancelAddLocation:" destination="7aq-t8-ryV" id="3uq-DR-AJW"/>
+                                                <action selector="cancelAddLocation:" destination="7aq-t8-ryV" id="zBt-6F-L4q"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -207,10 +208,15 @@
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="findLocationButton" destination="NxB-TX-OAw" id="rxy-Un-Sbq"/>
+                        <outlet property="locationTextField" destination="Mng-pp-ADd" id="Vkr-0o-XgX"/>
+                        <outlet property="profileLinkTextField" destination="0eh-xz-PO4" id="qtv-Yt-5iv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMo-oa-N4m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3369.5652173913045" y="-6.0267857142857144"/>
+            <point key="canvasLocation" x="3332" y="1"/>
         </scene>
         <!--Add Location View Controller-->
         <scene sceneID="gMZ-vC-vqV">
@@ -223,14 +229,14 @@
                             <navigationBar contentMode="scaleToFill" horizontalHuggingPriority="243" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-bf-K7f">
                                 <rect key="frame" x="0.0" y="33" width="414" height="56"/>
                                 <items>
-                                    <navigationItem title="Add Location" id="xi0-zf-5Sg"/>
+                                    <navigationItem title="Add Location" id="9fh-CE-0ye"/>
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HKV-sK-eZR">
                                 <rect key="frame" x="0.0" y="33" width="414" height="741"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnI-JV-bc5" userLabel="FINISH">
-                                <rect key="frame" x="73.5" y="689" width="267" height="30"/>
+                                <rect key="frame" x="73.5" y="733" width="267" height="30"/>
                                 <color key="backgroundColor" red="0.29561075570000001" green="0.62988126280000001" blue="0.84709280730000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="                          FINISH                             "/>
@@ -243,7 +249,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="POC-GF-CBr" firstAttribute="bottom" secondItem="HKV-sK-eZR" secondAttribute="bottom" constant="34" id="1Cy-hh-aTR"/>
-                            <constraint firstItem="FnI-JV-bc5" firstAttribute="bottom" secondItem="HKV-sK-eZR" secondAttribute="bottom" constant="-55" id="4dJ-Mh-KgN"/>
+                            <constraint firstItem="FnI-JV-bc5" firstAttribute="bottom" secondItem="HKV-sK-eZR" secondAttribute="bottom" constant="-11" id="4dJ-Mh-KgN"/>
                             <constraint firstItem="FnI-JV-bc5" firstAttribute="centerX" secondItem="POC-GF-CBr" secondAttribute="centerX" id="OiU-wx-9sI"/>
                             <constraint firstItem="mgz-bf-K7f" firstAttribute="centerX" secondItem="HKV-sK-eZR" secondAttribute="centerX" id="PjU-Rm-mJ7"/>
                             <constraint firstItem="mgz-bf-K7f" firstAttribute="top" secondItem="POC-GF-CBr" secondAttribute="top" constant="33" id="SI3-PI-XWh"/>
@@ -254,8 +260,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addLocation" destination="xi0-zf-5Sg" id="uyd-lP-3Yt"/>
-                        <outlet property="mapView" destination="FnI-JV-bc5" id="LkI-Kc-EZJ"/>
+                        <outlet property="addLocation" destination="9fh-CE-0ye" id="NOQ-pv-4MW"/>
+                        <outlet property="mapView" destination="HKV-sK-eZR" id="QUR-YO-6ym"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOo-Az-Hru" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

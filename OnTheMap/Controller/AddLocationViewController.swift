@@ -13,15 +13,22 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-    @IBOutlet weak var mapView: MKMapView!
-    
+    @IBOutlet weak var mapView: MKMapView!    
     @IBOutlet weak var addLocation: UINavigationItem!
     
     var firstName: String = ""
     var lastName: String = ""
     var segueIdentifier: String = ""
     
-    @IBAction func cancelAddLocation(_ sender: UIBarButtonItem) {
+    override func viewDidLoad() {
+      super.viewDidLoad()
+      mapView.delegate = self
+     self.drawMap()
+     self.getPublicUserInformation()
+        self.addLocation.leftBarButtonItem = UIBarButtonItem(image: nil, style: .done, target: self, action: #selector(cancel))
+     }
+    
+    @objc func cancel() {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -42,6 +49,57 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
         showFailure(failureType: "Can not create Student Location", message: error?.localizedDescription ?? "")
       }
     }
+    
+    func getPublicUserInformation() {
+        OTMClient.getPublicUserData(completion: self.handleGetPublicUserData(response:error:))
+    }
+    
+    func handleGetPublicUserData(response: User?, error: Error?) {
+      if (response != nil) {
+        firstName = response!.firstName
+        lastName = response!.lastName
+      }
+      else {
+         showFailure(failureType: "Unable to get Public User Data", message: error?.localizedDescription ?? "")
+      }
+    }
+    
+    func drawMap() {
+                
+      var annotations = [MKPointAnnotation]()
+
+      let annotation = MKPointAnnotation()
+      annotation.coordinate = (appDelegate.placemark?.location!.coordinate)!
+      annotation.title = appDelegate.mapString
+                            
+       annotations.append(annotation)
+                        
+       self.mapView.addAnnotations(annotations)
+        
+        self.mapView.setRegion(MKCoordinateRegion(center:annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000), animated:true)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+             
+       let reuseId = "pin"
+             
+       var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+
+        if pinView == nil {
+           pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+           pinView!.canShowCallout = true
+           pinView!.pinTintColor = .red
+           pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+           }
+         else {
+            pinView!.annotation = annotation
+         }
+             
+         return pinView
+      }
+
+         func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+         }
     
     func showFailure(failureType: String, message: String) {
         let alertVC = UIAlertController(title: failureType, message: message, preferredStyle: .alert)
