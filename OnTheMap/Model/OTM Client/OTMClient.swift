@@ -54,10 +54,12 @@ class OTMClient {
         }
     }
     
-    @discardableResult class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
+    @discardableResult class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, start: Int ,completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
                
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             
+            let newData = data?[start..<data!.count]
+
             guard let data = data else {
                 DispatchQueue.main.async {
                     completion(nil, error)
@@ -65,13 +67,13 @@ class OTMClient {
                 return
             }
             do {
-                let responseObject = try JSONDecoder().decode(ResponseType.self, from: data)
+                let responseObject = try JSONDecoder().decode(ResponseType.self, from: data[start..<data.count])
                 DispatchQueue.main.async {
                     completion(responseObject, nil)
                 }
             } catch {
                 do { 
-                    let errorResponse = try JSONDecoder().decode(OTMResponse.self, from: data) as Error
+                        let errorResponse = try JSONDecoder().decode(OTMResponse.self, from: data[start..<data.count]) as Error
                     DispatchQueue.main.async {
                         completion(nil, errorResponse)
                     }
@@ -170,7 +172,7 @@ class OTMClient {
     }
     
     class func getStudentLocation(completion: @escaping (Bool,Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.getStudentLocation.url, responseType: GetStudentLocationResponse.self) { (response, error) in
+        taskForGETRequest(url: Endpoints.getStudentLocation.url, responseType: GetStudentLocationResponse.self, start: 0) { (response, error) in
                    if let response = response {
                     OTMModel.student = response.results
                     completion(true,nil)
@@ -220,7 +222,7 @@ class OTMClient {
     }
     
     class func getPublicUserData(completion: @escaping (User?,Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.getPublicUserData.url, responseType: User.self) { (response, error) in
+        taskForGETRequest(url: Endpoints.getPublicUserData.url, responseType: User.self, start: 5) { (response, error) in
                    if let response = response {
                     completion(response,nil)
                    }

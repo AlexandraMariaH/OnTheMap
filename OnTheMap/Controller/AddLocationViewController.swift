@@ -17,8 +17,8 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     var mapString: String?
     var mediaURL: String?
 
-    @IBOutlet weak var mapView: MKMapView!    
-    @IBOutlet weak var addLocation: UINavigationItem!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var finishAddLocation: UIButton!
     
     var firstName: String = ""
     var lastName: String = ""
@@ -29,10 +29,14 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
      mapView.delegate = self
      self.drawMap()
      self.getPublicUserInformation()
-     self.addLocation.leftBarButtonItem = UIBarButtonItem(title: "< Add Location", style: .done, target: self, action: #selector(cancel))
-     }
+    }
     
-    @objc func cancel() {
+    override func viewWillAppear(_ animated: Bool) {
+           super.viewWillAppear(animated)
+           navigationController?.setNavigationBarHidden(false, animated: animated)
+       }
+    
+    @IBAction func AddLocation(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     

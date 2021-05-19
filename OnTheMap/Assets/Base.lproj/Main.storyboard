@@ -229,14 +229,20 @@
                             <navigationBar contentMode="scaleToFill" horizontalHuggingPriority="243" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-bf-K7f">
                                 <rect key="frame" x="0.0" y="33" width="414" height="56"/>
                                 <items>
-                                    <navigationItem title="Add Location" id="9fh-CE-0ye"/>
+                                    <navigationItem title="Add Location" id="9fh-CE-0ye">
+                                        <barButtonItem key="leftBarButtonItem" title="&lt; Add Location" id="6oz-fJ-a1e">
+                                            <connections>
+                                                <action selector="AddLocation:" destination="7Z7-h3-Hnr" id="tKf-Iw-ikf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HKV-sK-eZR">
-                                <rect key="frame" x="0.0" y="33" width="414" height="741"/>
+                                <rect key="frame" x="0.0" y="33" width="414" height="692"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnI-JV-bc5" userLabel="FINISH">
-                                <rect key="frame" x="73.5" y="733" width="267" height="30"/>
+                                <rect key="frame" x="73.5" y="684" width="267" height="30"/>
                                 <color key="backgroundColor" red="0.29561075570000001" green="0.62988126280000001" blue="0.84709280730000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="                          FINISH                             "/>
@@ -259,8 +265,10 @@
                             <constraint firstItem="mgz-bf-K7f" firstAttribute="leading" secondItem="HKV-sK-eZR" secondAttribute="leading" id="uqt-B5-Uvy"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addLocation" destination="9fh-CE-0ye" id="NOQ-pv-4MW"/>
+                        <outlet property="finishAddLocation" destination="FnI-JV-bc5" id="JbB-wy-lho"/>
                         <outlet property="mapView" destination="HKV-sK-eZR" id="QUR-YO-6ym"/>
                     </connections>
                 </viewController>
