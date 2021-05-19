@@ -12,6 +12,10 @@ import MapKit
 class AddLocationViewController: UIViewController, MKMapViewDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    var placemark:  CLPlacemark?
+    var mapString: String?
+    var mediaURL: String?
 
     @IBOutlet weak var mapView: MKMapView!    
     @IBOutlet weak var addLocation: UINavigationItem!
@@ -21,11 +25,11 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     var segueIdentifier: String = ""
     
     override func viewDidLoad() {
-      super.viewDidLoad()
-      mapView.delegate = self
+     super.viewDidLoad()
+     mapView.delegate = self
      self.drawMap()
      self.getPublicUserInformation()
-        self.addLocation.leftBarButtonItem = UIBarButtonItem(image: nil, style: .done, target: self, action: #selector(cancel))
+     self.addLocation.leftBarButtonItem = UIBarButtonItem(title: "< Add Location", style: .done, target: self, action: #selector(cancel))
      }
     
     @objc func cancel() {
@@ -69,8 +73,10 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
       var annotations = [MKPointAnnotation]()
 
       let annotation = MKPointAnnotation()
-      annotation.coordinate = (appDelegate.placemark?.location!.coordinate)!
-      annotation.title = appDelegate.mapString
+        if( appDelegate.placemark?.location?.coordinate != nil) {
+                  annotation.coordinate = (appDelegate.placemark?.location?.coordinate)!
+              }
+        annotation.title = appDelegate.mapString
                             
        annotations.append(annotation)
                         

@@ -172,8 +172,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="tab:" destination="7aq-t8-ryV" eventType="touchUpInside" id="P3M-0o-2yR"/>
-                                            <segue destination="7Z7-h3-Hnr" kind="presentation" identifier="tabAddLocation" id="0v5-Bd-R4a"/>
+                                            <action selector="findLocationTapped:" destination="7aq-t8-ryV" eventType="touchUpInside" id="jdF-gY-WQm"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -212,6 +211,7 @@
                         <outlet property="findLocationButton" destination="NxB-TX-OAw" id="rxy-Un-Sbq"/>
                         <outlet property="locationTextField" destination="Mng-pp-ADd" id="Vkr-0o-XgX"/>
                         <outlet property="profileLinkTextField" destination="0eh-xz-PO4" id="qtv-Yt-5iv"/>
+                        <segue destination="7Z7-h3-Hnr" kind="presentation" identifier="tabAddLocation" id="m5k-jb-UEc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMo-oa-N4m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

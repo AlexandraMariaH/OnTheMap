@@ -14,6 +14,10 @@ class InformationPostingViewController: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    var placemark:  CLPlacemark?
+    var mapString: String?
+    var mediaURL: String?
+    
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var findLocationButton: UIButton!    
     @IBOutlet weak var profileLinkTextField: UITextField!
@@ -35,7 +39,7 @@ class InformationPostingViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func findLocationTapped(_ sender: UIButton) {
+    @IBAction func findLocationTapped(_ sender: Any) {
         print("findLocationButton0")
 
         if (self.profileLinkTextField.text != "") {
@@ -55,9 +59,9 @@ class InformationPostingViewController: UIViewController {
        // setGeocoding(false)
         if (placemarks != nil) {
             print("Geocoding Successful0")
-            appDelegate.placemark = placemarks?[0]
-            appDelegate.mapString = self.locationTextField.text
-            appDelegate.mediaURL = self.profileLinkTextField.text
+            self.placemark = placemarks?[0]
+            self.mapString = self.locationTextField.text
+            self.mediaURL = self.profileLinkTextField.text
             print("Geocoding Successful1")
 
             self.performSegue(withIdentifier: "tabAddLocation", sender: nil)
@@ -76,6 +80,9 @@ class InformationPostingViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
         let alvc = segue.destination as! AddLocationViewController
+        alvc.placemark = placemark
+        alvc.mapString = mapString
+        alvc.mediaURL = mediaURL
         alvc.segueIdentifier = segueIdentifier
     }
 }

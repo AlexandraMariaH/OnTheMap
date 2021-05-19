@@ -72,5 +72,10 @@ class LoginViewController: UIViewController {
         show(alertVC, sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       emailTextField.text = ""
+       passwordTextField.text = ""
+    }
+    
 }
 
