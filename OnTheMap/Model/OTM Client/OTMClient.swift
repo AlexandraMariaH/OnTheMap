@@ -196,31 +196,6 @@ class OTMClient {
               }
           }
     
-    /*class func updateStudentLocation(firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Double, longitude: Double, completion: @escaping (Bool, Error?) -> Void) {
-        let body = "{\"uniqueKey\": \"\(Auth.key)\",\"firstName\": \"\(firstName)\",\"lastName\": \"\(lastName)\",\"mapString\": \"\(mapString)\",\"mediaURL\": \"\(mediaURL)\",\"latitude\": \(latitude), \"longitude\": \(longitude)}"
-        print("Update Body")
-        print(body)
-        let urlString = "https://onthemap-api.udacity.com/v1/StudentLocation/c14rkasloqil40hibqu0"
-        let url = URL(string: urlString)
-        var request = URLRequest(url: url!)
-        request.httpMethod = "PUT"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = body.data(using: .utf8)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
-          if error != nil { // Handle error…
-              completion(false,error)
-          }
-          else {
-            print(String(data: data!, encoding: .utf8)!)
-            DispatchQueue.main.async {
-              completion(true, nil)
-            }
-          }
-        }
-        task.resume()
-    }*/
-    
     class func getPublicUserData(completion: @escaping (User?,Error?) -> Void) {
         taskForGETRequest(url: Endpoints.getPublicUserData.url, responseType: User.self, start: 5) { (response, error) in
                    if let response = response {

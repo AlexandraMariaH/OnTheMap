@@ -43,10 +43,6 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
         OTMClient.createStudentLocation(firstName: firstName, lastName: lastName, mapString: appDelegate.mapString ?? "", mediaURL: appDelegate.mediaURL ?? "", latitude: (appDelegate.placemark?.location!.coordinate.latitude)!, longitude: (appDelegate.placemark?.location!.coordinate.longitude)!, completion: self.handleCreateStudentLocation(success:error:))
     }
     
-    /*func updateStudentLocation() {
-        OTMClient.updateStudentLocation(firstName: firstName, lastName: lastName, mapString: appDelegate.mapString ?? "", mediaURL: appDelegate.mediaURL ?? "", latitude: (appDelegate.placemark?.location!.coordinate.latitude)!, longitude: (appDelegate.placemark?.location!.coordinate.longitude)!, completion: self.handleUpdateStudentLocation(success:error:))
-    }*/
-    
     func handleCreateStudentLocation(success: Bool, error: Error?) {
       if (success) {
         performSegue(withIdentifier: segueIdentifier, sender: self)
@@ -56,15 +52,6 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
         showFailure(failureType: "Can not create Student Location", message: error?.localizedDescription ?? "")
       }
     }
-    
-  /*  func handleUpdateStudentLocation(success: Bool, error: Error?) {
-      if (success) {
-        performSegue(withIdentifier: segueIdentifier, sender: self)
-      }
-      else {
-         showFailure(failureType: "Unable To Update Student Location", message: error?.localizedDescription ?? "")
-      }
-    }*/
     
     func getPublicUserInformation() {
         OTMClient.getPublicUserData(completion: self.handleGetPublicUserData(response:error:))
@@ -136,7 +123,6 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
     @IBAction func backToList(_ sender: Any) {
         performSegue(withIdentifier: "unwindToList", sender: self)
     }
-    
     
 }
 
