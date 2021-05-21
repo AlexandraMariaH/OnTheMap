@@ -80,6 +80,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             UIApplication.shared.open(URL(string: student.mediaURL)!)
        }
      }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
+        let ipvc = segue.destination as! InformationPostingViewController
+        ipvc.segueIdentifier = "unwindToList"
+    }
+    
+    @IBAction func unwindToList(segue:UIStoryboardSegue) { }
         
     }
 

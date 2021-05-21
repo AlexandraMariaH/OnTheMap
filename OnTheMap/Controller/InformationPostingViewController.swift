@@ -40,10 +40,7 @@ class InformationPostingViewController: UIViewController {
     }
     
     @IBAction func findLocationTapped(_ sender: Any) {
-        print("findLocationButton0")
-
         if (self.profileLinkTextField.text != "") {
-            print("findLocationButton")
             self.findLocation()
         }
         else {
@@ -56,16 +53,12 @@ class InformationPostingViewController: UIViewController {
     }
     
     func handleFindLocation(placemarks: [CLPlacemark]?, error: Error?) {
-       // setGeocoding(false)
         if (placemarks != nil) {
-            print("Geocoding Successful0")
-            self.placemark = placemarks?[0]
-            self.mapString = self.locationTextField.text
-            self.mediaURL = self.profileLinkTextField.text
-            print("Geocoding Successful1")
+            appDelegate.placemark = placemarks?[0]
+            appDelegate.mapString = self.locationTextField.text
+            appDelegate.mediaURL = self.profileLinkTextField.text
 
             self.performSegue(withIdentifier: "tabAddLocation", sender: nil)
-            print("Geocoding Successful2")
         }
         else {
             showFindLocationFailure(message: "Geocoding Failed")

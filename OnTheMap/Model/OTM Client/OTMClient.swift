@@ -196,7 +196,7 @@ class OTMClient {
               }
           }
     
-    class func updateStudentLocation(firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Double, longitude: Double, completion: @escaping (Bool, Error?) -> Void) {
+    /*class func updateStudentLocation(firstName: String, lastName: String, mapString: String, mediaURL: String, latitude: Double, longitude: Double, completion: @escaping (Bool, Error?) -> Void) {
         let body = "{\"uniqueKey\": \"\(Auth.key)\",\"firstName\": \"\(firstName)\",\"lastName\": \"\(lastName)\",\"mapString\": \"\(mapString)\",\"mediaURL\": \"\(mediaURL)\",\"latitude\": \(latitude), \"longitude\": \(longitude)}"
         print("Update Body")
         print(body)
@@ -219,7 +219,7 @@ class OTMClient {
           }
         }
         task.resume()
-    }
+    }*/
     
     class func getPublicUserData(completion: @escaping (User?,Error?) -> Void) {
         taskForGETRequest(url: Endpoints.getPublicUserData.url, responseType: User.self, start: 5) { (response, error) in

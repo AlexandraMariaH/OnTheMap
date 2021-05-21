@@ -31,11 +31,6 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
      self.getPublicUserInformation()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           navigationController?.setNavigationBarHidden(false, animated: animated)
-       }
-    
     @IBAction func AddLocation(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -48,6 +43,10 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
         OTMClient.createStudentLocation(firstName: firstName, lastName: lastName, mapString: appDelegate.mapString ?? "", mediaURL: appDelegate.mediaURL ?? "", latitude: (appDelegate.placemark?.location!.coordinate.latitude)!, longitude: (appDelegate.placemark?.location!.coordinate.longitude)!, completion: self.handleCreateStudentLocation(success:error:))
     }
     
+    /*func updateStudentLocation() {
+        OTMClient.updateStudentLocation(firstName: firstName, lastName: lastName, mapString: appDelegate.mapString ?? "", mediaURL: appDelegate.mediaURL ?? "", latitude: (appDelegate.placemark?.location!.coordinate.latitude)!, longitude: (appDelegate.placemark?.location!.coordinate.longitude)!, completion: self.handleUpdateStudentLocation(success:error:))
+    }*/
+    
     func handleCreateStudentLocation(success: Bool, error: Error?) {
       if (success) {
         performSegue(withIdentifier: segueIdentifier, sender: self)
@@ -57,6 +56,15 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
         showFailure(failureType: "Can not create Student Location", message: error?.localizedDescription ?? "")
       }
     }
+    
+  /*  func handleUpdateStudentLocation(success: Bool, error: Error?) {
+      if (success) {
+        performSegue(withIdentifier: segueIdentifier, sender: self)
+      }
+      else {
+         showFailure(failureType: "Unable To Update Student Location", message: error?.localizedDescription ?? "")
+      }
+    }*/
     
     func getPublicUserInformation() {
         OTMClient.getPublicUserData(completion: self.handleGetPublicUserData(response:error:))
@@ -86,7 +94,7 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
                         
        self.mapView.addAnnotations(annotations)
         
-        self.mapView.setRegion(MKCoordinateRegion(center:annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000), animated:true)
+        self.mapView.setRegion(MKCoordinateRegion(center:annotation.coordinate, latitudinalMeters: 0.01, longitudinalMeters: 0.01), animated:true)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -104,11 +112,15 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
          else {
             pinView!.annotation = annotation
          }
-             
          return pinView
       }
 
          func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+            if control == view.rightCalloutAccessoryView {
+                let app = UIApplication.shared
+                if let toOpen = view.annotation?.subtitle! {
+                    app.open(URL(string: toOpen)!)
+                }}
          }
     
     func showFailure(failureType: String, message: String) {
@@ -117,7 +129,14 @@ class AddLocationViewController: UIViewController, MKMapViewDelegate {
          self.present(alertVC, animated:true)
     }
     
-   
+    @IBAction func backToMap(_ sender: Any) {
+        performSegue(withIdentifier: "unwindToMap", sender: self)
+    }
+    
+    @IBAction func backToList(_ sender: Any) {
+        performSegue(withIdentifier: "unwindToList", sender: self)
+    }
+    
     
 }
 

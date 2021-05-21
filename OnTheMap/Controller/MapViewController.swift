@@ -109,4 +109,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.present(alertVC, animated:true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
+        let ipvc = segue.destination as! InformationPostingViewController
+        ipvc.segueIdentifier = "unwindToMap"
+    }
+    
+    @IBAction func unwindToMap(segue:UIStoryboardSegue) { }
+
+    
 }

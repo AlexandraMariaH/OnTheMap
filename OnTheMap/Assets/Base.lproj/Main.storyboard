@@ -227,22 +227,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" horizontalHuggingPriority="243" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-bf-K7f">
-                                <rect key="frame" x="0.0" y="33" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <items>
                                     <navigationItem title="Add Location" id="9fh-CE-0ye">
                                         <barButtonItem key="leftBarButtonItem" title="&lt; Add Location" id="6oz-fJ-a1e">
                                             <connections>
-                                                <action selector="AddLocation:" destination="7Z7-h3-Hnr" id="tKf-Iw-ikf"/>
+                                                <action selector="AddLocation:" destination="7Z7-h3-Hnr" id="wkV-Yz-xXa"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HKV-sK-eZR">
-                                <rect key="frame" x="0.0" y="33" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnI-JV-bc5" userLabel="FINISH">
-                                <rect key="frame" x="73.5" y="684" width="267" height="30"/>
+                                <rect key="frame" x="73.5" y="718" width="267" height="30"/>
                                 <color key="backgroundColor" red="0.29561075570000001" green="0.62988126280000001" blue="0.84709280730000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="                          FINISH                             "/>
@@ -254,14 +254,14 @@
                         <viewLayoutGuide key="safeArea" id="POC-GF-CBr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="POC-GF-CBr" firstAttribute="bottom" secondItem="HKV-sK-eZR" secondAttribute="bottom" constant="34" id="1Cy-hh-aTR"/>
+                            <constraint firstItem="POC-GF-CBr" firstAttribute="bottom" secondItem="HKV-sK-eZR" secondAttribute="bottom" id="1Cy-hh-aTR"/>
                             <constraint firstItem="FnI-JV-bc5" firstAttribute="bottom" secondItem="HKV-sK-eZR" secondAttribute="bottom" constant="-11" id="4dJ-Mh-KgN"/>
                             <constraint firstItem="FnI-JV-bc5" firstAttribute="centerX" secondItem="POC-GF-CBr" secondAttribute="centerX" id="OiU-wx-9sI"/>
                             <constraint firstItem="mgz-bf-K7f" firstAttribute="centerX" secondItem="HKV-sK-eZR" secondAttribute="centerX" id="PjU-Rm-mJ7"/>
-                            <constraint firstItem="mgz-bf-K7f" firstAttribute="top" secondItem="POC-GF-CBr" secondAttribute="top" constant="33" id="SI3-PI-XWh"/>
+                            <constraint firstItem="mgz-bf-K7f" firstAttribute="top" secondItem="POC-GF-CBr" secondAttribute="top" id="SI3-PI-XWh"/>
                             <constraint firstItem="HKV-sK-eZR" firstAttribute="leading" secondItem="POC-GF-CBr" secondAttribute="leading" id="auQ-SK-oOC"/>
-                            <constraint firstItem="POC-GF-CBr" firstAttribute="trailing" secondItem="HKV-sK-eZR" secondAttribute="trailing" id="hzr-hu-ASk"/>
-                            <constraint firstItem="mgz-bf-K7f" firstAttribute="top" secondItem="HKV-sK-eZR" secondAttribute="top" id="on0-dc-YXM"/>
+                            <constraint firstItem="POC-GF-CBr" firstAttribute="trailing" secondItem="mgz-bf-K7f" secondAttribute="trailing" id="hzr-hu-ASk"/>
+                            <constraint firstItem="mgz-bf-K7f" firstAttribute="bottom" secondItem="HKV-sK-eZR" secondAttribute="top" id="on0-dc-YXM"/>
                             <constraint firstItem="mgz-bf-K7f" firstAttribute="leading" secondItem="HKV-sK-eZR" secondAttribute="leading" id="uqt-B5-Uvy"/>
                         </constraints>
                     </view>
@@ -270,9 +270,12 @@
                     <connections>
                         <outlet property="finishAddLocation" destination="FnI-JV-bc5" id="JbB-wy-lho"/>
                         <outlet property="mapView" destination="HKV-sK-eZR" id="QUR-YO-6ym"/>
+                        <segue destination="oGG-bs-b3m" kind="unwind" identifier="unwindToMap" unwindAction="unwindToMapWithSegue:" id="gff-db-Q7X"/>
+                        <segue destination="oGG-bs-b3m" kind="unwind" identifier="unwindToList" unwindAction="unwindToListWithSegue:" id="JSV-cC-8tm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOo-Az-Hru" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="oGG-bs-b3m" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4024.6376811594205" y="-6.0267857142857144"/>
         </scene>
