@@ -42,7 +42,7 @@ class OTMClient {
                 return Endpoints.base + "/StudentLocation"
             
             case .getStudentLocation:
-                return Endpoints.base + "/StudentLocation" + "?order=-updatedAt"
+                return Endpoints.base + "/StudentLocation" + "?limit=100&order=-updatedAt"
             
             case .getPublicUserData:
                 return Endpoints.base + "/users/" + Auth.key
@@ -140,9 +140,9 @@ class OTMClient {
             if let response = response {
                 Auth.key = response.account.key
                 Auth.sessionId = response.session.id
-                completion(true, nil)
+                completion(true, error)
             } else {
-                completion(false, nil)
+                completion(false, error)
             }
         }
     }
